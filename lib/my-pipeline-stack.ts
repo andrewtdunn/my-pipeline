@@ -5,6 +5,7 @@ import {
   CodePipelineSource,
   ShellStep,
 } from "aws-cdk-lib/pipelines";
+import { MyPipelineAppStage } from "./my-pipeline-app-stage";
 // import * as sqs from 'aws-cdk-lib/aws-sqs';
 
 export class MyPipelineStack extends cdk.Stack {
@@ -33,6 +34,12 @@ export class MyPipelineStack extends cdk.Stack {
         commands: ["npm ci", "npm run build", "npx cdk synth"],
       }),
     });
+
+    pipeline.addStage(
+      new MyPipelineAppStage(this, "test", {
+        env: { account: "730335377532", region: "eu-west-1" },
+      })
+    );
 
     // // Connect Application stage (which contains the Stacks)
     // const applicationStage = new ApplicationStage(this, "DeployStage", {
