@@ -37,7 +37,7 @@ export class MyPipelineStack extends cdk.Stack {
 
     pipeline.addStage(
       new MyPipelineAppStage(this, "test", {
-        env: { account: "730335377532", region: "eu-west-1" },
+        env: { account: "730335377532", region: "us-east-1" },
       })
     );
 
