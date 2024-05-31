@@ -21,6 +21,7 @@ export class MyPipelineStack extends cdk.Stack {
 
     const pipeline = new CodePipeline(this, "Pipeline", {
       pipelineName: "MyPipeline",
+      crossAccountKeys: true,
       synth: new ShellStep("Synth", {
         //input: CodePipelineSource.gitHub("andrewtdunn/my-pipeline", "main"),
         input: CodePipelineSource.connection(
