@@ -37,19 +37,15 @@ export class MyPipelineStack extends cdk.Stack {
     });
 
     pipeline.addStage(
-      new MyPipelineAppStage(this, "test", {
+      new MyPipelineAppStage(this, "deploy to test", {
         env: { account: "730335377532", region: "us-east-1" },
       })
     );
 
-    // // Connect Application stage (which contains the Stacks)
-    // const applicationStage = new ApplicationStage(this, "DeployStage", {
-    //   env: {
-    //     account: "730335377532",
-    //     region: "us-east-1",
-    //   },
-    //   version: "1",
-    // });
-    // pipeline.addStage(applicationStage);
+    pipeline.addStage(
+      new MyPipelineAppStage(this, "deploy to prod", {
+        env: { account: "339713083299", region: "us-east-1" },
+      })
+    );
   }
 }
