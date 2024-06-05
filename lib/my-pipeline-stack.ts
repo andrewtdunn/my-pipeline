@@ -26,7 +26,7 @@ export class MyPipelineStack extends cdk.Stack {
           }
         ),
         commands: [
-          "cd react",
+          "cd react_code",
           "npm i",
           "npm build",
           "cd ..",
