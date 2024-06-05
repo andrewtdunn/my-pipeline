@@ -13,7 +13,7 @@ export class MyPipelineStack extends cdk.Stack {
     super(scope, id, props);
 
     const pipeline = new CodePipeline(this, "Pipeline", {
-      pipelineName: "hyperTunnel-pipeline",
+      pipelineName: "hyperTunnel-pipeline-react",
       crossAccountKeys: true,
       synth: new ShellStep("Synth", {
         //input: CodePipelineSource.gitHub("andrewtdunn/my-pipeline", "main"),
