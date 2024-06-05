@@ -7,18 +7,10 @@ import {
   ManualApprovalStep,
 } from "aws-cdk-lib/pipelines";
 import { MyPipelineAppStage } from "./my-pipeline-app-stage";
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
 
 export class MyPipelineStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
-
-    // The code that defines your stack goes here
-
-    // example resource
-    // const queue = new sqs.Queue(this, 'MyPipelineQueue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
 
     const pipeline = new CodePipeline(this, "Pipeline", {
       pipelineName: "hyperTunnel-pipeline",
@@ -33,7 +25,15 @@ export class MyPipelineStack extends cdk.Stack {
               "arn:aws:codestar-connections:us-east-1:637423577773:connection/78b54ada-1f46-4e0d-8b5c-572f1c8ee882",
           }
         ),
-        commands: ["npm ci", "npm run build", "npx cdk synth"],
+        commands: [
+          "cd react",
+          "npm i",
+          "npm build",
+          "cd ..",
+          "npm ci",
+          "npm run build",
+          "npx cdk synth",
+        ],
       }),
     });
 
