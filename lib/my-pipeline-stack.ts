@@ -21,7 +21,7 @@ export class MyPipelineStack extends cdk.Stack {
     // });
 
     const pipeline = new CodePipeline(this, "Pipeline", {
-      pipelineName: "HyperTunnel Pipeline",
+      pipelineName: "HyperTunnel-Pipeline",
       crossAccountKeys: true,
       synth: new ShellStep("Synth", {
         //input: CodePipelineSource.gitHub("andrewtdunn/my-pipeline", "main"),
